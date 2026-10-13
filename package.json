@@ -15,7 +15,7 @@
     "icon": "node scripts/make-icon.js && bash scripts/make-icns.sh",
     "package": "node scripts/package.mjs",
     "package:mac-intel": "node scripts/package.mjs x64",
-    "package:win": "electron-builder --win --x64 --config electron-builder.yml",
+    "package:win": "electron-builder --win --x64 --publish never --config electron-builder.yml",
     "package:all": "npm run package && npm run package:mac-intel && npm run package:win"
   },
   "dependencies": {
