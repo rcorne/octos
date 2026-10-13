@@ -47,7 +47,8 @@ await test('sin llavero cifra con la llave local y no rechaza la clave', () => {
   assert.equal(store.get('ai.key.openai'), 'sk-proj-123');
   const raw = fs.readFileSync(path.join(dir, 'b.enc'), 'utf8');
   assert.ok(!raw.includes('sk-proj'), 'cifrado');
-  assert.equal(fs.statSync(path.join(dir, 'b.key')).mode & 0o777, 0o600, 'la llave local solo la lee el usuario');
+  // Los permisos de Unix no existen en Windows: allí la llave queda dentro del perfil del usuario (AppData)
+  if (process.platform !== 'win32') assert.equal(fs.statSync(path.join(dir, 'b.key')).mode & 0o777, 0o600, 'la llave local solo la lee el usuario');
 });
 
 await test('si el llavero falla al cifrar, cae al cifrado local', () => {
