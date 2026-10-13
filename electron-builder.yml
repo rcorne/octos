@@ -1,0 +1,40 @@
+# Instalador de Windows (NSIS). Mac se empaqueta con scripts/package.mjs.
+# Uso: npm run package:win
+appId: com.mamiferolab.octos
+productName: Octos
+copyright: © 2026 Rodrigo Cornejo
+# Lighthouse y sus dependencias no funcionan dentro de un .asar
+asar: false
+directories:
+  output: out/windows
+files:
+  - "**/*"
+  - "!out/**"
+  - "!test/**"
+  - "!scripts/**"
+  - "!docs/**"
+  - "!.github/**"
+  - "!**/*.md"
+  - "!electron-builder.yml"
+  - "!assets/icon-1024.png"
+  - "!assets/icon.icns"
+win:
+  target:
+    - target: nsis
+      arch: [x64]
+  icon: assets/icon-1024.png
+fileAssociations:
+  - ext: octos
+    name: Rastreo de Octos
+    description: Rastreo de Octos
+    role: Editor
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: Octos
+  language: "3082"
+  artifactName: Octos-${version}-Setup-x64.exe
+  deleteAppDataOnUninstall: false

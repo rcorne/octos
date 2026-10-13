@@ -1,0 +1,53 @@
+# Pruebas en cada cambio. Mac corre todo; Windows corre las pruebas que no dependen de herramientas
+# de Mac y además abre Chrome de verdad para comprobar Lighthouse y el cifrado de credenciales.
+name: Pruebas
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  mac:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm test
+
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Pruebas del motor, Google, IA, credenciales, análisis y marca
+        shell: bash
+        run: |
+          for t in run-tests secrets.test analisis-v2.test google.test ai.test marca.test; do
+            node "test/$t.mjs"
+          done
+      - name: Lighthouse local con el Chrome de Windows
+        run: node test/smoke-lighthouse.mjs
+      - name: Instalador de Windows
+        run: npm run package:win
+      - name: Diagnóstico de la app empaquetada
+        shell: pwsh
+        run: |
+          $exe = Get-ChildItem out/windows/win-unpacked/Octos.exe
+          Start-Process -FilePath $exe.FullName -ArgumentList '--diagnostico', "--salida=$PWD\diagnostico.json" -Wait
+          Get-Content diagnostico.json
+          $d = Get-Content diagnostico.json | ConvertFrom-Json
+          if (-not $d.lecturaOk) { throw 'El almacén de credenciales no funciona' }
+      - uses: actions/upload-artifact@v4
+        with:
+          name: octos-windows-instalador
+          path: out/windows/Octos-*-Setup-x64.exe
+          if-no-files-found: error

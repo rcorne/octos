@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'">
+  <title>Octos</title>
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="titlebar">
+    <div class="brand" title="Octos"><span class="brand-mark" data-icon="logotipo"></span></div>
+    <nav class="titlebar-nav" aria-label="Navegación">
+      <button class="icon-btn" id="nav-back" title="Atrás (⌘[)" aria-label="Atrás" data-icon="chevronLeft" disabled></button>
+      <button class="icon-btn" id="nav-forward" title="Adelante (⌘])" aria-label="Adelante" data-icon="chevron" disabled></button>
+      <button class="icon-btn" id="nav-home" title="Inicio (⇧⌘H)" aria-label="Inicio" data-icon="home"></button>
+    </nav>
+    <div class="crawlbar" id="crawlbar" hidden>
+      <span class="crawlbar-dot" id="crawlbar-dot"></span>
+      <span class="crawlbar-url" id="crawlbar-url"></span>
+      <span class="crawlbar-meta" id="crawlbar-meta"></span>
+      <div class="crawlbar-progress"><i id="crawlbar-progress"></i></div>
+    </div>
+    <div class="titlebar-actions">
+      <button class="icon-btn" id="btn-pause" title="Pausar" hidden data-icon="pause"></button>
+      <button class="icon-btn" id="btn-stop" title="Detener" hidden data-icon="stop"></button>
+      <button class="ghost-btn" id="btn-new" title="Rastrea otro sitio (⌘N)"><span data-icon="plus"></span>Rastrear otro</button>
+      <button class="ghost-btn" id="btn-export" title="Exportar informe, CSV o sitemap" disabled><span data-icon="download"></span>Exportar</button>
+      <button class="icon-btn" id="btn-palette" title="Abrir la paleta de comandos (⌘K)" data-icon="command"></button>
+      <button class="icon-btn" id="btn-settings" title="Abrir ajustes (⌘,)" data-icon="sliders"></button>
+    </div>
+  </header>
+
+  <div class="shell">
+    <aside class="sidebar" id="sidebar" hidden>
+      <nav id="nav"></nav>
+      <div class="sidebar-foot" id="sidebar-foot"></div>
+    </aside>
+    <main class="main" id="main"></main>
+    <aside class="drawer" id="drawer" aria-hidden="true"></aside>
+  </div>
+
+  <div class="overlay" id="overlay" hidden></div>
+  <div class="toasts" id="toasts" aria-live="polite"></div>
+
+  <script src="../lib/pixels.js"></script>
+  <script src="../lib/simhash.js"></script>
+  <script src="../lib/analysis.js"></script>
+  <script src="../lib/plan.js"></script>
+  <script src="icons.js"></script>
+  <script src="mamifero-logo.js"></script>
+  <script src="report.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

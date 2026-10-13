@@ -1,0 +1,60 @@
+# Publica los instaladores al subir una etiqueta, por ejemplo: git tag v1.0.0 && git push --tags
+name: Publicar instaladores
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  mac:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run package          # Apple Silicon (.dmg)
+      - run: npm run package:mac-intel # Intel (.dmg)
+      - uses: actions/upload-artifact@v4
+        with:
+          name: octos-mac
+          path: out/Octos-*.dmg
+          if-no-files-found: error
+
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run package:win
+      - uses: actions/upload-artifact@v4
+        with:
+          name: octos-windows
+          path: out/windows/Octos-*-Setup-x64.exe
+          if-no-files-found: error
+
+  publicar:
+    needs: [mac, windows]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: instaladores
+          merge-multiple: true
+      - name: Crear la versión con los instaladores
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "${GITHUB_REF_NAME}" instaladores/* \
+            --repo "${GITHUB_REPOSITORY}" \
+            --title "Octos ${GITHUB_REF_NAME}" \
+            --generate-notes

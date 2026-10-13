@@ -1,0 +1,54 @@
+{
+  "name": "octos",
+  "productName": "Octos",
+  "version": "1.0.0",
+  "description": "Crawler y análisis de SEO para Mac y Windows, con Google Search Console, Analytics, Lighthouse e IA con tu propia clave.",
+  "main": "main.js",
+  "author": {
+    "name": "Rodrigo Cornejo",
+    "url": "https://mamiferolab.com/"
+  },
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "test": "node test/todas.mjs",
+    "icon": "node scripts/make-icon.js && bash scripts/make-icns.sh",
+    "package": "node scripts/package.mjs",
+    "package:mac-intel": "node scripts/package.mjs x64",
+    "package:win": "electron-builder --win --x64 --config electron-builder.yml",
+    "package:all": "npm run package && npm run package:mac-intel && npm run package:win"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "0.133.0",
+    "cheerio": "1.2.0",
+    "chrome-launcher": "1.2.2",
+    "exceljs": "4.4.0",
+    "lighthouse": "13.5.0",
+    "openai": "7.32.0",
+    "pptxgenjs": "4.0.1",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@electron/packager": "20.2.1",
+    "electron": "44.4.5",
+    "electron-builder": "26.17.0"
+  },
+  "homepage": "https://github.com/rcorne/octos#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rcorne/octos.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rcorne/octos/issues"
+  },
+  "keywords": [
+    "seo",
+    "crawler",
+    "electron",
+    "lighthouse",
+    "search-console",
+    "google-analytics",
+    "macos",
+    "windows"
+  ]
+}

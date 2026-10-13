@@ -1,0 +1,64 @@
+/* Octos — generated from tokens.json */
+@font-face{font-family:"Manrope";font-weight:700;font-style:normal;font-display:swap;src:url("fonts/Manrope-700.woff2") format("woff2")}
+@font-face{font-family:"Manrope";font-weight:800;font-style:normal;font-display:swap;src:url("fonts/Manrope-800.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Sans";font-weight:400;font-style:normal;font-display:swap;src:url("fonts/IBMPlexSans-400.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Sans";font-weight:600;font-style:normal;font-display:swap;src:url("fonts/IBMPlexSans-600.woff2") format("woff2")}
+:root, [data-theme="light"] {
+  --surface: #FFFFFF;
+  --canvas: #EEF1F7;
+  --ink: #12141C;
+  --ink-muted: #5B6070;
+  --hairline: #D9DDE8;
+  --octos-blue: #0B6BFF;
+  --on-octos-blue: #FFFFFF;
+  --petal-celeste: #7FD0FF;
+  --petal-cielo: #4FB0FF;
+  --petal-azul: #2E8CFF;
+  --petal-indigo: #5E80F8;
+  --petal-violeta: #8E7BFF;
+  --petal-lila: #B79CFA;
+  --petal-agua: #9ADFD0;
+  --petal-menta: #7BE0B0;
+  --wash-celeste: #BFE5FF;
+  --wash-lila: #E4D6FF;
+  --wash-menta: #C9F1C9;
+  --wash-rosa: #F7D7E4;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-16: 64px;
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 36px;
+  --radius-app: 23%;
+  --shadow-icon: 0 20px 44px rgba(70,90,170,.22), 0 2px 6px rgba(70,90,170,.10), inset 0 -6px 12px rgba(120,140,200,.10);
+  --shadow-card: 0 1px 2px rgba(40,50,90,.12), 0 14px 30px rgba(40,50,90,.10);
+  --font-display: "Manrope", system-ui, sans-serif;
+  --font-text: "IBM Plex Sans", system-ui, sans-serif;
+}
+[data-theme="dark"] {
+  --surface: #141830;
+  --canvas: #0A0C17;
+  --ink: #F3F5FA;
+  --ink-muted: #A9B0C5;
+  --hairline: #2A3050;
+  --octos-blue: #5CB0FF;
+  --on-octos-blue: #0A0C17;
+  --wash-celeste: #1B3A57;
+  --wash-lila: #2C2450;
+  --wash-menta: #1F4636;
+  --wash-rosa: #4A2A3C;
+}
+.display{font-family:var(--font-display);font-size:64px;line-height:68px;font-weight:800;letter-spacing:-0.02em}
+.titulo-1{font-family:var(--font-display);font-size:40px;line-height:44px;font-weight:800;letter-spacing:-0.02em}
+.titulo-2{font-family:var(--font-display);font-size:26px;line-height:32px;font-weight:800;letter-spacing:-0.01em}
+.titulo-3{font-family:var(--font-display);font-size:20px;line-height:26px;font-weight:700}
+.cuerpo-grande{font-family:var(--font-text);font-size:18px;line-height:28px;font-weight:400}
+.cuerpo{font-family:var(--font-text);font-size:15px;line-height:24px;font-weight:400}
+.etiqueta{font-family:var(--font-text);font-size:13px;line-height:18px;font-weight:600;letter-spacing:0.02em}
+.nota{font-family:var(--font-text);font-size:12px;line-height:18px;font-weight:400}

@@ -1,0 +1,7 @@
+node_modules/
+out/
+*.dmg
+*.exe
+.DS_Store
+.env
+.env.*
