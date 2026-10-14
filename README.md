@@ -29,7 +29,7 @@ Una creación de [Mamífero](https://mamiferolab.com/).
 
 ## Instalación
 
-Descarga el instalador de tu sistema desde [Releases](https://github.com/rcorne/octos/releases):
+Descarga el instalador de tu sistema desde la [última versión](https://github.com/rcorne/octos/releases/latest). Más información en [mamiferolab.com/octos](https://www.mamiferolab.com/octos).
 
 | Sistema | Archivo |
 | --- | --- |
@@ -41,6 +41,8 @@ Los instaladores **no están firmados** con un certificado de Apple ni de Micros
 
 - **Mac:** abre el `.dmg`, arrastra Octos a Aplicaciones, haz clic derecho sobre la app y elige **Abrir**. Si macOS la bloquea, ve a Ajustes del Sistema → Privacidad y seguridad y pulsa **Abrir de todos modos**.
 - **Windows:** si aparece «Windows protegió su PC», pulsa **Más información** y luego **Ejecutar de todas formas**.
+
+Es normal en apps independientes. Guía: [mamiferolab.com/apps](https://www.mamiferolab.com/apps#como-abrir-apps).
 
 ## Compilar desde el código
 
